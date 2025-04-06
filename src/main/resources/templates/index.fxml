@@ -4,13 +4,20 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.endorodrigo.task.controller.IndexController">
    <children>
-      <Label layoutX="223.0" layoutY="31.0" text="SITEMA DE TAREAS">
+      <Label layoutX="197.0" layoutY="28.0" text="SISTEMA DE TAREAS" textFill="#b50e0b" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </Label>
+      <TableView fx:id="tareaTabla" layoutX="191.0" layoutY="81.0" prefHeight="308.0" prefWidth="393.0">
+        <columns>
+          <TableColumn fx:id="idColumna" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="tareaColumna" prefWidth="75.0" text="TAREA" />
+            <TableColumn fx:id="responsableColumna" prefWidth="129.0" text="RESPONSABLE" />
+            <TableColumn fx:id="statusColumna" prefWidth="113.0" text="STATUS" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
