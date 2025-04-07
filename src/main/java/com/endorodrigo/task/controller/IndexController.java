@@ -91,6 +91,7 @@ public class IndexController implements Initializable {
         }
     }
 
+    @FXML
     private void limpiarFormulario() {
         txtTarea.setText("");
         txtResponsable.setText("");
