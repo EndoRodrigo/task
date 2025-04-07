@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.endorodrigo.task.controller.IndexController">
@@ -11,7 +12,7 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <TableView fx:id="tareaTabla" layoutX="191.0" layoutY="81.0" prefHeight="308.0" prefWidth="393.0">
+      <TableView fx:id="tareaTabla" layoutX="191.0" layoutY="81.0" prefHeight="216.0" prefWidth="393.0">
         <columns>
           <TableColumn fx:id="idColumna" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="tareaColumna" prefWidth="75.0" text="TAREA" />
@@ -19,5 +20,57 @@
             <TableColumn fx:id="statusColumna" prefWidth="113.0" text="STATUS" />
         </columns>
       </TableView>
+      <Label layoutX="27.0" layoutY="81.0" text="TAREA">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.07797271013259888" green="0.4345678985118866" blue="0.8421052694320679" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2705882489681244" green="0.5372549295425415" blue="0.843137264251709" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="164.0" text="RESPONSABLE" textFill="#4589d7">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="243.0" text="ESTATUS" textFill="#4589d7">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtTarea" layoutX="28.0" layoutY="108.0" />
+      <TextField fx:id="txtResponsable" layoutX="24.0" layoutY="188.0" />
+      <TextField fx:id="txtEstatus" layoutX="24.0" layoutY="272.0" />
+      <Button fx:id="btnAgregar" layoutX="49.0" layoutY="336.0" mnemonicParsing="false" onAction="#AgregarTarea" text="Agregar" textFill="#0fc953">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnActualizar" layoutX="157.0" layoutY="336.0" mnemonicParsing="false" text="Actualizar" textFill="#1a42c6">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnEliminar" layoutX="285.0" layoutY="336.0" mnemonicParsing="false" text="Eliminar" textFill="#dd2929">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <Button fx:id="btnLimpizar" layoutX="403.0" layoutY="336.0" mnemonicParsing="false" text="Limpiar Formulario" textFill="#cd26a9">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>

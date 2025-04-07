@@ -5,11 +5,14 @@ import com.endorodrigo.task.presentation.SistemaTareasFx;
 import com.endorodrigo.task.service.TareaServicio;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.apache.commons.logging.LogFactory;
 import org.slf4j.Logger;
@@ -17,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,6 +28,9 @@ import java.util.ResourceBundle;
 public class IndexController implements Initializable {
 
     private static final Logger log = LoggerFactory.getLogger(IndexController.class);
+    public TextField txtTarea;
+    public TextField txtResponsable;
+    public TextField txtEstatus;
 
     @Autowired
     private TareaServicio tareaServicio;
@@ -42,6 +49,7 @@ public class IndexController implements Initializable {
 
     @FXML
     private TableColumn<Tarea, String> statusColumna;
+    
 
     private final ObservableList<Tarea> tareaList = FXCollections.observableArrayList();
 
@@ -64,5 +72,40 @@ public class IndexController implements Initializable {
         tareaColumna.setCellValueFactory(new PropertyValueFactory<>("nombreTarea"));
         responsableColumna.setCellValueFactory(new PropertyValueFactory<>("responsable"));
         statusColumna.setCellValueFactory(new PropertyValueFactory<>("estatus"));
+    }
+
+    public void AgregarTarea(ActionEvent actionEvent) {
+        if (txtTarea == null) {
+            MostrarMensaje("Error validacion", "Debe agregar un tarea");
+            txtTarea.requestFocus();
+            return;
+        }else  {
+            var tarea = new Tarea();
+            recolectarDatosFormulario(tarea);
+            tareaServicio.guardarTarea(tarea);
+            MostrarMensaje("Informacion", "Tarea guardada con exito");
+            limpiarFormulario();
+            listarTarea();
+        }
+    }
+
+    private void limpiarFormulario() {
+        txtTarea.setText("");
+        txtResponsable.setText("");
+        txtEstatus.setText("");
+    }
+
+    private void recolectarDatosFormulario(Tarea tarea) {
+        tarea.setNombreTarea(txtTarea.getText());
+        tarea.setResponsable(txtResponsable.getText());
+        tarea.setEstatus(txtEstatus.getText());
+    }
+
+    private void MostrarMensaje(String titulo, String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
     }
 }
