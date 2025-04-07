@@ -12,7 +12,7 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <TableView fx:id="tareaTabla" layoutX="191.0" layoutY="81.0" prefHeight="216.0" prefWidth="393.0">
+      <TableView fx:id="tareaTabla" layoutX="191.0" layoutY="81.0" onMouseClicked="#agregarTareaFormulario" prefHeight="216.0" prefWidth="393.0">
         <columns>
           <TableColumn fx:id="idColumna" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="tareaColumna" prefWidth="75.0" text="TAREA" />

@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import org.apache.commons.logging.LogFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +29,7 @@ import java.util.ResourceBundle;
 public class IndexController implements Initializable {
 
     private static final Logger log = LoggerFactory.getLogger(IndexController.class);
+    public Integer idTarea;
     public TextField txtTarea;
     public TextField txtResponsable;
     public TextField txtEstatus;
@@ -107,5 +109,18 @@ public class IndexController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
         alert.showAndWait();
+    }
+
+    public void agregarTareaFormulario(MouseEvent mouseEvent) {
+        log.info("Seleciono una tarea");
+        var tarea = tareaTabla.getSelectionModel().getSelectedItem();
+        log.info(tarea.toString());
+        if (tarea != null) {
+            idTarea = tarea.getIdTarea();
+            txtTarea.setText(tarea.getNombreTarea());
+            txtResponsable.setText(tarea.getResponsable());
+            txtEstatus.setText(tarea.getEstatus());
+            log.info("Seleciono la tarea con ID: " + idTarea);
+        }
     }
 }
