@@ -59,7 +59,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnActualizar" layoutX="157.0" layoutY="336.0" mnemonicParsing="false" text="Actualizar" textFill="#1a42c6">
+      <Button fx:id="btnActualizar" layoutX="157.0" layoutY="336.0" mnemonicParsing="false" onAction="#modificarTarea" text="Actualizar" textFill="#1a42c6">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

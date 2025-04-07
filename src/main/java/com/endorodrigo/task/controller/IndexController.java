@@ -98,6 +98,7 @@ public class IndexController implements Initializable {
     }
 
     private void recolectarDatosFormulario(Tarea tarea) {
+        tarea.setIdTarea(idTarea);
         tarea.setNombreTarea(txtTarea.getText());
         tarea.setResponsable(txtResponsable.getText());
         tarea.setEstatus(txtEstatus.getText());
@@ -122,5 +123,23 @@ public class IndexController implements Initializable {
             txtEstatus.setText(tarea.getEstatus());
             log.info("Seleciono la tarea con ID: " + idTarea);
         }
+    }
+
+    public void modificarTarea(ActionEvent actionEvent) {
+        if (idTarea == null) {
+            MostrarMensaje("Informacion", "Debe seleccionar una tarea");
+            return;
+        }
+        if (txtTarea == null) {
+            MostrarMensaje("Error validacion", "Debe proporcionar un tarea");
+            txtTarea.requestFocus();
+            return;
+        }
+        var tarea = new Tarea();
+        recolectarDatosFormulario(tarea);
+        tareaServicio.guardarTarea(tarea);
+        MostrarMensaje("Informacion", "Tarea actualizada con exito");
+        limpiarFormulario();
+        listarTarea();
     }
 }
