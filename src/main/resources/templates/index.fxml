@@ -64,7 +64,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnEliminar" layoutX="285.0" layoutY="336.0" mnemonicParsing="false" text="Eliminar" textFill="#dd2929">
+      <Button fx:id="btnEliminar" layoutX="285.0" layoutY="336.0" mnemonicParsing="false" onAction="#eliminarTarea" text="Eliminar" textFill="#dd2929">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>

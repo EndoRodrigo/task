@@ -142,4 +142,19 @@ public class IndexController implements Initializable {
         limpiarFormulario();
         listarTarea();
     }
+
+    public void eliminarTarea(ActionEvent actionEvent) {
+        if (idTarea == null) {
+            MostrarMensaje("Informacion", "Debe seleccionar una tarea");
+        }
+        var tarea = tareaTabla.getSelectionModel().getSelectedItem();
+        if (tarea != null) {
+            tareaServicio.eliminarTarea(idTarea);
+            MostrarMensaje("Informacion", "Tarea eliminada con exito");
+            log.info("Eliminar la tarea :"+ tarea.toString());
+            limpiarFormulario();
+            listarTarea();
+
+        }
+    }
 }
